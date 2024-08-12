@@ -316,11 +316,9 @@ main .profile .profile-review-summary {
 
 main .profile .profile-read-review {
   text-align: right;
-}
-
-main .profile .profile-read-review a {
   color: #dfc34c;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .review-star {
@@ -486,6 +484,10 @@ footer > div {
   font-weight: 200;
 }
 
+.modal-title.bigger {
+  font-size: 1.9rem;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -498,4 +500,64 @@ footer > div {
   color: #FFFFFF;
   padding: 20px;
   border-radius: 40px;
+}
+
+#client-reviews-modal .lawyer-profile {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#client-reviews-modal .lawyer-profile img {
+  border-radius: 200px;
+  width: 80px;
+  height: 80px;
+}
+
+#client-reviews-modal .lawyer-info {
+  margin-left: 20px;
+}
+
+#client-reviews-modal .lawyer-info .lawyer-name {
+  font-size: 1.7rem;
+  font-weight: 200;
+}
+
+#client-reviews-modal .lawyer-info .lawyer-location {
+  font-weight: 100;
+}
+
+#client-reviews-modal .lawyer-info .lawyer-subject-matter {
+  font-weight: 200;
+}
+
+#client-reviews-modal .lawyer-rating {
+  font-weight: 400;
+}
+
+#client-reviews-modal table th {
+  font-weight: 400;
+}
+
+#client-reviews-modal table td {
+  padding-right: 180px;
+  font-weight: 200;
+}
+
+#client-reviews-modal .review-author {
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#client-reviews-modal .review-desc {
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+#client-reviews-modal #close-client-reviews-modal {
+  border: none;
+  background-color: #FFFFFF;
+  color: #0000ff;
+  font-weight: 300;
+  float: right;
 }

@@ -35,6 +35,10 @@ const getTopProfileReviews = () => [
     },
 ]
 
+const getLawyerById = (id) => {
+    return getTopProfileReviews().filter(profile => profile.lawyerId == id)
+}
+
 const getZipCodesAndCities = () => [
     "Nowheresville, XX 00000"
 ]
@@ -55,7 +59,8 @@ const getAllCategories = () => [
 ]
 
 export default {
-    getTopProfileReviews, 
+    getTopProfileReviews,
+    getLawyerById,
     getZipCodesAndCities,
     getAllCategories
 }

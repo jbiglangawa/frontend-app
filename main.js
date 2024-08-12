@@ -6,10 +6,10 @@ const pageState = {
     category: ""
 }
 
-// Get the modal
+// WhichFamilyLawModal Setup
 var whichFamilyLawModal = document.getElementById("which-family-law-modal");
-var closeButton = document.getElementsByClassName("close")[0];
-closeButton.onclick = function() {
+var wFLMCloseButton = document.getElementsByClassName("wflm-close")[0];
+wFLMCloseButton.onclick = function() {
   whichFamilyLawModal.style.display = "none";
 }
 window.onclick = function(event) {
@@ -17,13 +17,105 @@ window.onclick = function(event) {
     whichFamilyLawModal.style.display = "none";
   }
 }
-
 const openWhichFamilyLawModal = () => {
     if(pageState.zipCity != "" && pageState.category != "") {
         whichFamilyLawModal.style.display = "block";
     }
 }
 
+// ClientReviewsModal Setup
+var clientReviewsModal = document.getElementById("client-reviews-modal");
+var crmCloseButton = document.getElementsByClassName("crm-close")[0];
+crmCloseButton.onclick = function() {
+    clientReviewsModal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == clientReviewsModal) {
+        clientReviewsModal.style.display = "none";
+    }
+  }
+window.openClientReviewsModal = (lawyerId) => {
+    clientReviewsModal.style.display = "block";
+    const lawyer = DatabaseService.getLawyerById(lawyerId);
+    console.log(lawyer)
+    if(lawyer.length == 1) {
+        renderOpenClientReviewModal(lawyer[0])
+    }
+}
+const renderOpenClientReviewModal = (lawyer) => {
+    var clientReviewModalContent = document.getElementById("client-review-modal-content");
+    var stars = new Array(lawyer.overallRating).fill(0).map(() => "<i class=\"fas fa-star review-star\"></i>").join("");
+    console.log(stars)
+    clientReviewModalContent.innerHTML = `
+            <div class="modal-title bigger">
+                CLIENT REVIEWS
+              </div>
+              <hr class="solid">
+              <div class="lawyer-profile">
+                <img src="${lawyer.profileImage}">
+                <div class="lawyer-info">
+                  <div class="lawyer-name">${lawyer.lawyerName}</div>
+                  <div class="lawyer-location">${lawyer.location}</div>
+                  <div class="lawyer-subject-matter">${lawyer.subjectMatter}</div>
+                </div>
+              </div>
+              <div class="modal-title lawyer-rating">
+                Rating <span>(29 users)</span> <span>stars</span>
+              </div>
+              <hr class="solid">
+              <div>
+                <table>
+                  <thead>
+                    <th>Overall</th>
+                    <th>${stars}</th>
+                  </thead>
+                  <tr>
+                    <td>Responded in a timely manner</td>
+                    <td>${stars}</td>
+                  </tr>
+                  <tr>
+                    <td>Answered questions clearly</td>
+                    <td>${stars}</td>
+                  </tr>
+                  <tr>
+                    <td>Understood needs</td>
+                    <td>${stars}</td>
+                  </tr>
+                  <tr>
+                    <td>Gave complete and clear information</td>
+                    <td>${stars}</td>
+                  </tr>
+                  <tr>
+                    <td>Knowledgeable in legal area</td>
+                    <td>${stars}</td>
+                  </tr>
+                  <tr>
+                    <td>Good value for money</td>
+                    <td>${stars}</td>
+                  </tr>
+                  <tr>
+                    <td>Would hire again</td>
+                    <td>${stars}</td>
+                  </tr>
+                  <tr>
+                    <td>Would recommend to friend</td>
+                    <td>${stars}</td>
+                  </tr>
+                </table>
+                <hr class="solid">
+                <div class="review-author">
+                  <span>${stars}</span> by Dexter Marchal, 06/10/2016
+                </div>
+                <div class="review-desc">${lawyer.lawyerName} did a great job. Got my bench warrant set aside ... was sure I was going to jail ...phew. Judge seem to respect her and I got what I</div>
+                <div>
+                  <button type="button" id="close-client-reviews-modal">CLOSE</button>
+                </div>
+              </div>`
+
+    document.getElementById("close-client-reviews-modal").addEventListener("click", function() {
+        clientReviewsModal.style.display = "none";
+    })
+}
 
 // Category constant dropdown values
 window.onClickDropdownItem = (selectedCategory) => {
@@ -43,7 +135,7 @@ document.getElementById("category-dropdown").addEventListener("click", () => {
 
 // Setting up profile reviews
 const profiles = DatabaseService.getTopProfileReviews();
-const profilesDisplay = profiles.map(profile => `
+const profilesDisplay = profiles.map((profile, i) => `
     <div class="profile">
         <div class="profile-image">
             <img src="${profile.profileImage}" alt="mitchell m.">
@@ -57,12 +149,13 @@ const profilesDisplay = profiles.map(profile => `
             </div>
             <div>
                 <div class="profile-review-summary">${profile.mostRecentReview}</div>
-                <div class="profile-read-review">
-                    <a href="/">Read Review <img src="book.png" alt="book"></a>
+                <div class="profile-read-review" onclick="openClientReviewsModal(${profile.lawyerId})">
+                    Read Review <img src="book.png" alt="book">
                 </div>
             </div>
         </div>
-    </div>`).join("");
+    </div>
+    ${i != profiles.length - 1 ? '<hr class="solid">}' : ''}`).join("");
 document.getElementById("profile").innerHTML = profilesDisplay;
 
 // Zip City Code dynamic autocomplete setup
