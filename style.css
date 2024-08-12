@@ -186,12 +186,12 @@ main .main-reviews h3 {
   font-weight: 100;
 }
 
-main .profile {
+main .profile-wrapper .profile {
   display: flex;
   padding: 10px;
 }
 
-main .profile .profile-image {
+main .profile-wrapper .profile .profile-image {
   width: 25%;
   display: flex;
   flex-direction: column;
@@ -199,7 +199,7 @@ main .profile .profile-image {
   justify-content: center;
 }
 
-main .profile .profile-image img {
+main .profile-wrapper .profile .profile-image img {
   width: 80px;
   height: 80px;
   border-radius: 200px;
@@ -230,7 +230,15 @@ main .profile .profile-review-summary {
 
 main .profile .profile-read-review {
   text-align: right;
+}
+
+main .profile .profile-read-review a {
   color: #dfc34c;
+  text-decoration: none;
+}
+
+.review-star {
+  color: #d89108;
 }
 
 
@@ -255,7 +263,7 @@ section.main-content .cant-find-category a {
 }
 
 header {
-    padding: 10px 10%;
+    padding: 10px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -275,7 +283,7 @@ header .main-logo a img {
 header .main-logo a span {
     position: absolute;
     text-wrap: nowrap;
-    bottom: 12px;
+    bottom: -12px;
     padding-left: 10px;
 }
 
@@ -288,10 +296,10 @@ header .features-checklist ul li {
 }
 
 header .features-checklist ul li:before {
-    content: '✓ ';
-    font-weight: 900;
-    color: green;
-  }
+  content: '✓ ';
+  font-weight: 900;
+  color: green;
+}
 
 footer {
     display: flex;
