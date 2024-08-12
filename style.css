@@ -179,6 +179,42 @@ main .main-search .main-search-select i {
   color: #a6aaad;
 }
 
+main .autocomplete-wrapper {
+  position: relative;
+}
+
+main #query-results {
+  display: none;
+  position: absolute;
+  left: 50px;
+  bottom: -36px;
+  top: 100px;
+  overflow-y: scroll;
+  min-height: 50px;
+  max-height: 400px;
+  list-style: none;
+  z-index: 3;
+  background-color: #FFFFFF;
+  color: #000000;
+  padding-left: 0;
+}
+
+main #query-results li {
+  padding: 8px 40px;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 100;
+}
+
+main #query-results li:hover {
+  background-color: #7d8389;
+  cursor: pointer;
+}
+
+main #query-results .highlight-autocomplete {
+  color: #006ee0;
+}
+
 .input-with-colored-bullet {
   position: relative;
 }

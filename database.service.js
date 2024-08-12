@@ -5,36 +5,41 @@ const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aen
  * Mock service for getting profile reviews from the database
  * 
  */
-const getTopProfileReviews = () => {
-    return [
-        {
-            lawyerId: 1,
-            lawyerName: "Mitchell M.",
-            location: "Cherry Hill, NJ",
-            subjectMatter: "Family Law",
-            mostRecentReview: loremIpsum,
-            overallRating: 5, 
-            profileImage: "lawyer1.jpg"
-        },
-        {
-            lawyerId: 2,
-            lawyerName: "Joel C.",
-            location: "Little Rock, AK",
-            subjectMatter: "Job & Employment Law",
-            mostRecentReview: loremIpsum,
-            overallRating: 5,
-            profileImage: "lawyer2.jpg"
-        },
-        {
-            lawyerId: 3,
-            lawyerName: "Brigida R.",
-            location: "Dallas, TX",
-            subjectMatter: "Family Law",
-            mostRecentReview: loremIpsum,
-            overallRating: 5,
-            profileImage: "lawyer3.jpg"
-        },
-    ]
-}
+const getTopProfileReviews = () => [
+    {
+        lawyerId: 1,
+        lawyerName: "Mitchell M.",
+        location: "Cherry Hill, NJ",
+        subjectMatter: "Family Law",
+        mostRecentReview: loremIpsum,
+        overallRating: 5, 
+        profileImage: "lawyer1.jpg"
+    },
+    {
+        lawyerId: 2,
+        lawyerName: "Joel C.",
+        location: "Little Rock, AK",
+        subjectMatter: "Job & Employment Law",
+        mostRecentReview: loremIpsum,
+        overallRating: 5,
+        profileImage: "lawyer2.jpg"
+    },
+    {
+        lawyerId: 3,
+        lawyerName: "Brigida R.",
+        location: "Dallas, TX",
+        subjectMatter: "Family Law",
+        mostRecentReview: loremIpsum,
+        overallRating: 5,
+        profileImage: "lawyer3.jpg"
+    },
+]
 
-export default {getTopProfileReviews}
+const getZipCodesAndCities = () => [
+    "Nowheresville, XX 00000"
+]
+
+export default {
+    getTopProfileReviews, 
+    getZipCodesAndCities
+}

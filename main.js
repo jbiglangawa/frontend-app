@@ -24,3 +24,37 @@ const profilesDisplay = profiles.map(profile => `
     </div>`)
 
 document.getElementById("profile").innerHTML = profilesDisplay.join("");
+
+
+const zipCityDropdownValues = DatabaseService.getZipCodesAndCities();
+document.getElementById("search-zip-city").addEventListener("keyup", (evt) => {
+    var val = evt.target.value
+    var queryResults = document.getElementById("query-results")
+
+    if (val.length > 1) {
+        queryResults.innerHTML = ""
+        queryResults.style.display = 'none'
+        
+        zipCityDropdownValues.forEach((zipCity) => {
+            if(zipCity.match(new RegExp(val,'i'))) {
+                const result = zipCity.replace(new RegExp(val, "i"), "<span class='highlight-autocomplete'>$&</span>")
+                let suggestion = document.createElement("li");
+                suggestion.setAttribute("data-value", zipCity);
+                suggestion.innerHTML = result;
+                suggestion.addEventListener("click", () => {
+                    let selectedValue = suggestion.getAttribute("data-value");
+                    document.getElementById("search-zip-city").value = selectedValue;
+
+                    queryResults.innerHTML = ""
+                    queryResults.style.display = 'none'
+                })
+
+                queryResults.append(suggestion)
+                queryResults.style.display = 'block';
+            }
+        })
+    } else {
+        queryResults.innerHTML = ""
+        queryResults.style.display = 'none'
+    }
+});
