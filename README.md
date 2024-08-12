@@ -1,6 +1,9 @@
 # frontend-app
 
-Vite is used as a scaffold to create an HTML-Based app faster
+This app is built with Vanilla Javascript, HTML and CSS.
+Vite is used as a scaffold to create an HTML-Based app faster.
+Bootstrap is included but Javascript functionalities is not implemented.
+Only Category Dropdown uses Bootstrap.
 
 # Getting Started
 
