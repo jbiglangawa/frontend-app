@@ -86,6 +86,45 @@ body {
     font-family: 'GothamPro';
 }
 
+header {
+  padding: 10px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .main-logo a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #012991;
+  position: relative;
+}
+
+header .main-logo a img {
+  width: 300px;
+}
+
+header .main-logo a span {
+  position: absolute;
+  text-wrap: nowrap;
+  bottom: -12px;
+  padding-left: 10px;
+}
+
+header .features-checklist ul {
+  list-style: none;
+}
+
+header .features-checklist ul li {
+  margin: 5px 0;
+}
+
+header .features-checklist ul li:before {
+content: '✓ ';
+font-weight: 900;
+color: green;
+}
+
 main {
     background-color: #032c6b;
     background-image: url("/glow.png");
@@ -260,45 +299,6 @@ section.main-content .main-reviews {
 
 section.main-content .cant-find-category a {
   color: white
-}
-
-header {
-    padding: 10px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header .main-logo a {
-    text-decoration: none;
-    font-weight: 600;
-    color: #012991;
-    position: relative;
-}
-
-header .main-logo a img {
-    width: 300px;
-}
-
-header .main-logo a span {
-    position: absolute;
-    text-wrap: nowrap;
-    bottom: -12px;
-    padding-left: 10px;
-}
-
-header .features-checklist ul {
-    list-style: none;
-}
-
-header .features-checklist ul li {
-    margin: 5px 0;
-}
-
-header .features-checklist ul li:before {
-  content: '✓ ';
-  font-weight: 900;
-  color: green;
 }
 
 footer {
