@@ -91,19 +91,19 @@ main {
     background-image: url("/glow.png");
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 3%;
+    padding: 3% 5%;
     color: #FFF;
 }
 
 main .main-header h1 {
   font-weight: 100;
-  font-size: 4em;
+  font-size: 3.7em;
   margin: 0;
 }
 
 main .main-header h2 {
   font-weight: 400;
-  font-size: 2.85em;
+  font-size: 2.65em;
   margin: 0;
 }
 
@@ -114,7 +114,7 @@ main .main-search {
 main .main-search .main-search-input {
   width: 100%;
   border-radius: 100px;
-  font-size: 1.3em;
+  font-size: 1.3rem;
   padding: 1.5em;
   margin-bottom: 30px;
   box-sizing: border-box;
@@ -122,6 +122,10 @@ main .main-search .main-search-input {
   margin-top: 10px;
   background-color: #eceff3;
   color: #7d8389;
+}
+
+main .main-search .search-placeholder {
+  padding-left: 90px;
 }
 
 main .main-search .main-search-select {
@@ -136,22 +140,37 @@ main .main-search .main-search-select i {
   color: #a6aaad;
 }
 
-main .main-search .main-search-select span {
+.input-with-colored-bullet {
+  position: relative;
+}
+
+.colored-bullet {
   border-radius: 100px;
   background-color: #d68d00;
   color: #FFF;
   padding: 10px 15px;
   font-size: 1.2rem;
   margin-right: 10px;
+  width: 48px;
+  display: inline;
+  text-align: center;
+}
+
+.input-bullet {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  border-radius: 200px;
+  pointer-events: none;
 }
 
 main .main-search input.main-search-input::placeholder {
   font-family: 'GothamPro';
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 main .main-search .main-search-dropdown-label {
-  font-size: 1.75em;
+  font-size: 1.65em;
   font-weight: 200;
 }
 
@@ -167,20 +186,68 @@ main .main-reviews h3 {
   font-weight: 100;
 }
 
+main .profile {
+  display: flex;
+  padding: 10px;
+}
+
+main .profile .profile-image {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main .profile .profile-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 200px;
+}
+
+main .profile .profile-image .location {
+  font-weight: 200;
+}
+
+main .profile .profile-review {
+  width: 75%;
+}
+
+main .profile .profile-review-header {
+  margin-bottom: 10px;
+}
+
+main .profile .profile-review-summary {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  font-style: italic;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+
+main .profile .profile-read-review {
+  text-align: right;
+  color: #dfc34c;
+}
+
+
 section.main-content {
   display: flex;
 }
 
 section.main-content .main-search {
-  width: 55%;
+  width: 61%;
 }
 
 section.main-content .main-wrapper {
-  width: 70%;
+  width: 80%;
 }
 
 section.main-content .main-reviews {
-  width: 45%;
+  width: 39%;
 }
 
 section.main-content .cant-find-category a {
