@@ -39,7 +39,23 @@ const getZipCodesAndCities = () => [
     "Nowheresville, XX 00000"
 ]
 
+const getAllCategories = () => [
+    "Family",
+    "Criminal Defense",
+    "Business",
+    "Personal Injury",
+    "Bankruptcy & Finances",
+    "Products & Services",
+    "Employment",
+    "Real Estate",
+    "Immigration",
+    "Wills, Trusts & Estates",
+    "Government",
+    "Intellectual Property"
+]
+
 export default {
     getTopProfileReviews, 
-    getZipCodesAndCities
+    getZipCodesAndCities,
+    getAllCategories
 }

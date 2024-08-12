@@ -35,7 +35,7 @@
       <section class="main-content">
         <div class="main-search">
           <div class="main-wrapper">
-            <div>
+            <div class="main-zipcity">
               <div class="main-search-dropdown-label">
                 Enter Zip Code or City:
               </div>
@@ -46,18 +46,18 @@
               </div>
             </div>
 
-            <div>
+            <div class="main-category">
               <div class="main-search-dropdown-label">
                 Choose a category:
               </div>
               <div>
                 <div class="dropdown">
-                  <button class="btn btn-secondary main-search-input main-search-select" type="button">
+                  <button class="btn btn-secondary main-search-input main-search-select" type="button" id="category-dropdown">
                     <span class="colored-bullet">2</span>
-                    Click to choose a legal category
+                    <span id="category-value">Click to choose a legal category</span>
                     <i class="fas fa-angle-down"></i>
                   </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <div class="dropdown-menu" id="category-dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
@@ -107,6 +107,35 @@
       </div>
       
     </footer>
+
+    <div id="which-family-law-modal" class="modal">
+      <div class="modal-wrapper">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="modal-content-wrapper">
+            <div>
+              <span class="colored-bullet">3</span> 
+              <span class="modal-title">Which <strong>Family law</strong> issue(s) apply to your case?</span> 
+            </div>
+            <div class="category-selection">
+              <ul>
+                <li><input type="checkbox"> Adoptions</li>
+                <li><input type="checkbox"> Guardianship</li>
+                <li><input type="checkbox"> Child Custody and Visitation</li>
+                <li><input type="checkbox"> Paternity</li>
+                <li><input type="checkbox"> Child Support</li>
+                <li><input type="checkbox"> Separations</li>
+                <li><input type="checkbox"> Divorce</li>
+                <li><input type="checkbox"> Spousal Support or Alimony</li>
+              </ul>
+            </div>
+            <div class="center">
+              <button class="find-a-lawyer-now-btn" type="button">FIND A LAWYER NOW</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

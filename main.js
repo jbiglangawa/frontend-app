@@ -1,6 +1,47 @@
 import './style.css'
 import DatabaseService from './database.service'
 
+const pageState = {
+    zipCity: "",
+    category: ""
+}
+
+// Get the modal
+var whichFamilyLawModal = document.getElementById("which-family-law-modal");
+var closeButton = document.getElementsByClassName("close")[0];
+closeButton.onclick = function() {
+  whichFamilyLawModal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == whichFamilyLawModal) {
+    whichFamilyLawModal.style.display = "none";
+  }
+}
+
+const openWhichFamilyLawModal = () => {
+    if(pageState.zipCity != "" && pageState.category != "") {
+        whichFamilyLawModal.style.display = "block";
+    }
+}
+
+
+// Category constant dropdown values
+window.onClickDropdownItem = (selectedCategory) => {
+    let categoryValue = document.getElementById("category-value");
+    categoryValue.innerHTML = selectedCategory;
+    document.getElementById("category-dropdown-menu").style.display = "none";
+    pageState.category = selectedCategory;
+
+    openWhichFamilyLawModal();
+}
+const categories = DatabaseService.getAllCategories();
+const categorySelection = categories.map(catVal => `<a class="dropdown-item" onclick="onClickDropdownItem('${catVal}')">${catVal}</a>`).join("");
+document.getElementById("category-dropdown-menu").innerHTML = categorySelection
+document.getElementById("category-dropdown").addEventListener("click", () => {
+    document.getElementById("category-dropdown-menu").style.display = "block"
+})
+
+// Setting up profile reviews
 const profiles = DatabaseService.getTopProfileReviews();
 const profilesDisplay = profiles.map(profile => `
     <div class="profile">
@@ -21,11 +62,10 @@ const profilesDisplay = profiles.map(profile => `
                 </div>
             </div>
         </div>
-    </div>`)
+    </div>`).join("");
+document.getElementById("profile").innerHTML = profilesDisplay;
 
-document.getElementById("profile").innerHTML = profilesDisplay.join("");
-
-
+// Zip City Code dynamic autocomplete setup
 const zipCityDropdownValues = DatabaseService.getZipCodesAndCities();
 document.getElementById("search-zip-city").addEventListener("keyup", (evt) => {
     var val = evt.target.value
@@ -44,9 +84,12 @@ document.getElementById("search-zip-city").addEventListener("keyup", (evt) => {
                 suggestion.addEventListener("click", () => {
                     let selectedValue = suggestion.getAttribute("data-value");
                     document.getElementById("search-zip-city").value = selectedValue;
+                    pageState.zipCity = selectedValue;
 
                     queryResults.innerHTML = ""
                     queryResults.style.display = 'none'
+
+                    openWhichFamilyLawModal()
                 })
 
                 queryResults.append(suggestion)
@@ -58,3 +101,20 @@ document.getElementById("search-zip-city").addEventListener("keyup", (evt) => {
         queryResults.style.display = 'none'
     }
 });
+
+// Close popups on click elsewhere event
+window.addEventListener('mouseup', function(event) {
+    var queryResults = document.getElementById("query-results")
+    if(queryResults.style.display == "block") {
+        if(event.target != queryResults && event.target.parentNode != queryResults){
+            queryResults.style.display = 'none';
+        }
+    }
+
+    var categoryDropdownMenu = document.getElementById("category-dropdown-menu")
+    if(categoryDropdownMenu.style.display == "block") {
+        if(event.target != categoryDropdownMenu && event.target.parentNode != categoryDropdownMenu){
+            categoryDropdownMenu.style.display = 'none';
+        }
+    }
+});  
