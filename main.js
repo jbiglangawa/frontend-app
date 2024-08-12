@@ -117,6 +117,21 @@ const renderOpenClientReviewModal = (lawyer) => {
     })
 }
 
+// OtherCategoriesModal Setup
+var otherCategoriesModal = document.getElementById("other-categories-modal");
+var ocCloseButton = document.getElementsByClassName("oc-close")[0];
+ocCloseButton.onclick = function() {
+  otherCategoriesModal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == otherCategoriesModal) {
+    otherCategoriesModal.style.display = "none";
+  }
+}
+document.getElementById("cant-find-cat-btn").addEventListener("click", () => {
+  document.getElementById("other-categories-modal").style.display = "block";
+})
+
 // Category constant dropdown values
 window.onClickDropdownItem = (selectedCategory) => {
     let categoryValue = document.getElementById("category-value");
@@ -155,7 +170,7 @@ const profilesDisplay = profiles.map((profile, i) => `
             </div>
         </div>
     </div>
-    ${i != profiles.length - 1 ? '<hr class="solid">}' : ''}`).join("");
+    ${i != profiles.length - 1 ? '<hr class="solid">' : ''}`).join("");
 document.getElementById("profile").innerHTML = profilesDisplay;
 
 // Zip City Code dynamic autocomplete setup

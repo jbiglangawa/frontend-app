@@ -484,6 +484,11 @@ footer > div {
   font-weight: 200;
 }
 
+.modal-subtitle {
+  font-size: 1rem;
+  font-weight: 100;
+}
+
 .modal-title.bigger {
   font-size: 1.9rem;
 }
@@ -560,4 +565,35 @@ footer > div {
   color: #0000ff;
   font-weight: 300;
   float: right;
+}
+
+#other-categories-modal .modal-content-wrapper {
+  padding: 0 30px;
+  padding-bottom: 10px;
+}
+
+.other-categories {
+  display: flex;
+}
+
+.other-categories ul {
+  margin-right: 50px;
+}
+
+.other-categories ul li {
+  list-style: none;
+
+}
+
+.other-categories ul li a {
+  text-decoration: none;
+  font-weight: 200;
+}
+
+.button-link {
+  background: none;
+  border: none;
+  color: #FFF;
+  text-decoration: underline;
+  font-weight: 100;
 }
